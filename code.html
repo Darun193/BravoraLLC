@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bravora | Managed ML Data Ops for Industrial CV</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#111319",
+                        "on-tertiary-fixed": "#2e1500",
+                        "surface-container-highest": "#32353a",
+                        "on-primary-fixed-variant": "#364764",
+                        "secondary-fixed-dim": "#3adfab",
+                        "on-primary-fixed": "#071c36",
+                        "on-primary-container": "#7587a7",
+                        "outline": "#8e9098",
+                        "on-secondary": "#003828",
+                        "secondary": "#43e5b1",
+                        "on-surface-variant": "#c4c6ce",
+                        "surface-bright": "#36393f",
+                        "surface-tint": "#b5c7ea",
+                        "primary-container": "#0b1f3a",
+                        "surface-container-low": "#191c21",
+                        "surface-container-high": "#272a30",
+                        "on-primary": "#1f314d",
+                        "inverse-on-surface": "#2e3036",
+                        "surface-container-lowest": "#0b0e13",
+                        "secondary-container": "#01c896",
+                        "on-secondary-fixed": "#002116",
+                        "tertiary": "#eebd94",
+                        "inverse-primary": "#4d5f7d",
+                        "surface-container": "#1d2025",
+                        "on-error": "#690005",
+                        "on-secondary-fixed-variant": "#00513b",
+                        "secondary-fixed": "#60fcc6",
+                        "outline-variant": "#44474d",
+                        "surface-dim": "#111319",
+                        "on-tertiary-fixed-variant": "#613f20",
+                        "inverse-surface": "#e1e2e9",
+                        "primary": "#b5c7ea",
+                        "on-background": "#e1e2e9",
+                        "on-surface": "#FFFFFF"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        html { scroll-behavior: smooth; }
+        .glass-panel {
+            background: rgba(17, 19, 25, 0.6);
+            backdrop-filter: blur(24px);
+        }
+        /* Mobile menu toggle logic */
+        #mobile-menu {
+            display: none;
+        }
+        #mobile-menu.active {
+            display: flex;
+        }
+    </style>
+</head>
+<body class="bg-background text-[#FFFFFF] font-body selection:bg-secondary selection:text-on-secondary overflow-x-hidden">
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-slate-950/80 backdrop-blur-xl shadow-2xl shadow-blue-900/20 font-['Manrope'] antialiased">
+<div class="flex items-center justify-between px-6 md:px-8 py-4 max-w-screen-2xl mx-auto">
+<div class="text-xl md:text-2xl font-black tracking-tighter text-slate-100">Bravora LLC</div>
+<!-- Desktop Menu -->
+<div class="hidden md:flex items-center space-x-12">
+<a class="text-slate-400 font-medium hover:text-slate-100 transition-colors" href="#how-it-works">How it Works</a>
+<a class="text-slate-400 font-medium hover:text-slate-100 transition-colors" href="#services">Services</a>
+<a class="text-slate-400 font-medium hover:text-slate-100 transition-colors" href="#proof">Proof</a>
+</div>
+<div class="flex items-center gap-4">
+<a class="hidden sm:block bg-secondary text-on-secondary px-6 py-2 rounded font-bold hover:scale-95 transition-transform text-sm md:text-base" href="#pilot">Start a pilot</a>
+<!-- Mobile Toggle -->
+<button class="md:hidden text-slate-100 p-1" onclick="document.getElementById('mobile-menu').classList.toggle('active')">
+<span class="material-symbols-outlined text-3xl">menu</span>
+</button>
+</div>
+</div>
+<!-- Mobile Menu Overlay -->
+<div class="md:hidden absolute top-full left-0 w-full bg-slate-950 border-t border-slate-800 flex-col p-6 space-y-6 shadow-2xl transition-all" id="mobile-menu">
+<a class="text-slate-300 font-medium text-lg" href="#how-it-works" onclick="document.getElementById('mobile-menu').classList.remove('active')">How it Works</a>
+<a class="text-slate-300 font-medium text-lg" href="#services" onclick="document.getElementById('mobile-menu').classList.remove('active')">Services</a>
+<a class="text-slate-300 font-medium text-lg" href="#proof" onclick="document.getElementById('mobile-menu').classList.remove('active')">Proof</a>
+<a class="bg-secondary text-on-secondary px-6 py-3 rounded font-bold text-center" href="#pilot" onclick="document.getElementById('mobile-menu').classList.remove('active')">Start a pilot</a>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center pt-24 md:pt-20 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-r from-primary-container/95 via-background/90 to-background/80 z-10"></div>
+<img class="w-full h-full object-cover opacity-40 grayscale-[0.5]" data-alt="industrial logistics warehouse with high-tech automated sorting machines and trains under dramatic blue cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcI-eo56SxXVakwZaDl6WKUG7qt2XX-sthcvVLcv9kLriTNLK7RaxxBL585zPT46_VpbjHo3D8KFBGJ5_HJ1RyenJT9l5svQ971BjVV-LS3lmOyEF_Ub80bRhubJXfh6lSkYGiCc_bw_dzostq_UVsSUluFH0GF-y_NRMuRZ7iTS8lKzoNgnX0-ik9pq5eyF2d789TXYmpq-st5OS6koVHWpZmT_YkYCMzFel-gYV3bXN26ZM1M7WlRTd7bFR5osWpAhLY2XvjK18Z"/>
+</div>
+<div class="relative z-20 max-w-screen-2xl mx-auto px-6 md:px-8 w-full">
+<div class="max-w-4xl space-y-6 md:space-y-8">
+<div class="inline-flex items-center space-x-2 bg-secondary/10 px-3 md:px-4 py-1 rounded-full border border-secondary/20">
+<span class="w-2 h-2 bg-secondary rounded-full animate-pulse"></span>
+<span class="text-secondary text-[10px] md:text-xs font-bold tracking-widest uppercase">The Engineering Execution Layer</span>
+</div>
+<h1 class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-headline font-extrabold tracking-tighter text-[#FFFFFF] leading-tight">
+                    Managed ML Data Ops <br class="hidden md:block"/>
+<span class="text-secondary">for Industrial CV</span>
+</h1>
+<p class="text-lg md:text-2xl text-on-surface-variant max-w-3xl font-light leading-relaxed">
+                    When annotation, QA, and workflow changes start consuming engineering time, Bravora becomes the managed execution layer that keeps data work controlled, adaptable, and usable in production.
+                </p>
+<div class="flex flex-col sm:flex-row flex-wrap gap-4 pt-4">
+<a class="bg-secondary text-on-secondary px-8 py-4 rounded font-bold text-center md:text-lg hover:shadow-[0_0_20px_rgba(67,229,177,0.4)] transition-all" href="#pilot">Start a pilot</a>
+<a class="bg-primary-container text-primary px-8 py-4 rounded font-bold text-center md:text-lg hover:bg-on-primary-fixed-variant/20 transition-all border border-outline-variant/10" href="#how-it-works">See how this works</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Problem & Solution -->
+<section class="py-16 md:py-32 px-6 md:px-8 max-w-screen-2xl mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Problem Space -->
+<div class="lg:col-span-6 bg-surface-container-low p-8 md:p-12 flex flex-col justify-between">
+<div>
+<span class="text-secondary font-headline font-bold text-xs md:text-sm tracking-[0.2em] uppercase">The Bottleneck</span>
+<h2 class="text-3xl md:text-4xl font-headline font-bold mt-4 mb-8 text-[#FFFFFF]">Data work becomes another engineering problem.</h2>
+<p class="text-on-surface-variant mb-8 text-base md:text-lg">Poorly managed data operations lead to consistent failure patterns that stall shipping velocity:</p>
+<ul class="space-y-6">
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-red-400 mt-1">error_outline</span>
+<div>
+<span class="font-bold block text-on-surface">Outputs need rework</span>
+<span class="text-on-surface-variant text-sm italic">Engineers write scripts to "clean" the vendor's data before it hits training.</span>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-red-400 mt-1">error_outline</span>
+<div>
+<span class="font-bold block text-on-surface">Heavy QA burden</span>
+<span class="text-on-surface-variant text-sm italic">Engineers spend days manual checking samples instead of tuning models.</span>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-red-400 mt-1">error_outline</span>
+<div>
+<span class="font-bold block text-on-surface">Slow changes &amp; Scaling overhead</span>
+<span class="text-on-surface-variant text-sm italic">New edge cases take weeks to propagate across crowdsourced teams.</span>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<!-- Solution space -->
+<div class="lg:col-span-6 bg-primary-container p-8 md:p-12 relative overflow-hidden flex flex-col justify-center">
+<div class="relative z-10">
+<span class="text-secondary font-headline font-bold text-xs md:text-sm tracking-[0.2em] uppercase">The Solution</span>
+<h2 class="text-3xl md:text-4xl font-headline font-bold mt-4 mb-8 text-[#FFFFFF]">A managed execution layer that fits the engineering workflow.</h2>
+<p class="text-base md:text-lg text-primary leading-relaxed mb-8">
+                        We handle the human-in-the-loop work without being a simple "task queue". Bravora integrates into your tooling, absorbs your edge-case logic, and returns training-ready data that fits your specific pipeline requirements.
+                    </p>
+<div class="grid grid-cols-2 gap-4 md:gap-8">
+<div>
+<div class="text-3xl md:text-4xl font-headline font-bold text-secondary">99.8%</div>
+<div class="text-[10px] md:text-xs text-on-primary-container tracking-widest uppercase font-bold">QA Precision</div>
+</div>
+<div>
+<div class="text-3xl md:text-4xl font-headline font-bold text-secondary">4X</div>
+<div class="text-[10px] md:text-xs text-on-primary-container tracking-widest uppercase font-bold">Shipping Velocity</div>
+</div>
+</div>
+</div>
+<div class="absolute bottom-0 right-0 w-64 h-64 bg-secondary/5 blur-[120px] rounded-full"></div>
+</div>
+</div>
+</section>
+<!-- Services Section -->
+<section class="py-16 md:py-32 bg-surface-container-lowest" id="services">
+<div class="max-w-screen-2xl mx-auto px-6 md:px-8">
+<div class="mb-12 md:mb-16 text-center md:text-left">
+<h2 class="text-3xl md:text-5xl font-headline font-bold text-[#FFFFFF]">Specialized Services</h2>
+<div class="h-1 w-20 md:w-24 bg-secondary mt-6 mx-auto md:mx-0"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="bg-surface-container-high p-6 md:p-8 flex flex-col gap-6 hover:translate-y-[-8px] transition-all duration-300">
+<div class="h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover grayscale-[0.3] hover:grayscale-0 transition-all" data-alt="digital dashboard screen showing data annotation points and geometric overlays on top of complex technical machinery" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKQDHgobrUwBytm2E0S68alXOffvh3Hymgg7P488EMMNpIbRgQzsJOm-p0VDp2F-YMowpo7D7HppKmLg8ROcRUr8odlsGmj9HZ89ltDgmRcrXf0z5uVXZXFEg_typbefShibW9xtS77fFvUZDKMbnNOmwiZO2ZHIiyu8892KiTBVOtMbclzAq_q8dvu-UQHyCr2XEzVvFCcVO2AJV_hYnNusiSxUCxF8rWlWf6CQES8Fo0G8p59D_4RPthGwHTaet7CIx0Ro4oszDQ"/>
+</div>
+<div class="space-y-4">
+<h3 class="text-xl md:text-2xl font-bold text-[#FFFFFF]">Annotation + QA</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">
+                            High-precision labeling (2D/3D) with multi-stage verification for industrial OCR, classification, and segmentation tasks.
+                        </p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-high p-6 md:p-8 flex flex-col gap-6 hover:translate-y-[-8px] transition-all duration-300">
+<div class="h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover grayscale-[0.3] hover:grayscale-0 transition-all" data-alt="team of professionals in a dark futuristic control room with multiple screens and data displays" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCskYRAOt2sX9TTycS7EK362NW7oSMNsosEA-wgosVQcrLiqEtwQBDa_DW7rXsvykPwllzOHlY1nXjKcRCO0Z7bdbiARFvr98WMXudFnsYRXJREsd_Ro3kFOXXl6WrS4LY5yOqLGMWypCT1y0G2EF5UoHKjjsNYnCi2lhSPvbJ4olEdU8GEZ4Izi57Hku2OBlvSYFWiiSjLtTBViwjwbLIlqxZpQAqZPq-yqRQ4Nl-IO728rrhFzDSqE3m4Wt1G60jIZjTwQ1vv6XEv"/>
+</div>
+<div class="space-y-4">
+<h3 class="text-xl md:text-2xl font-bold text-[#FFFFFF]">Managed Data Ops Teams</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">
+                            Dedicated domain-trained teams that integrate directly into your internal workflow and communicate via Slack/Jira.
+                        </p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-high p-6 md:p-8 flex flex-col gap-6 hover:translate-y-[-8px] transition-all duration-300 lg:col-span-1 md:col-span-2 lg:md:col-span-1">
+<div class="h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover grayscale-[0.3] hover:grayscale-0 transition-all" data-alt="abstract close up of fiber optic cables and server lights glowing neon blue in a data center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATbUhQBakEg2CGBcuscOEcQ1V78Lz-y2ZCPhXYJC3tZC98L4tw8e26KZkNP1aANNH5ljlIPlxaKWOGAeriGHcD8upImVdxmAcZHmAbwXX1PuHp8_-_3XUlZ5JkIYiLvcPfPVte_RS2bcY7OUZuIXbSa7fmoiLIAnuL4jYZ_DWlQAxOWmxxXE22xu3pAEEPN5-VFUi8_r_V5PFYLO2oJ0ITYNgRDy_-nuvtr2qaegtg9yFNpWMIVDziDTbm-Tr9XOCH8mITHwYjUBJS"/>
+</div>
+<div class="space-y-4">
+<h3 class="text-xl md:text-2xl font-bold text-[#FFFFFF]">Workflow / Tooling Support</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">
+                            Architecture and maintenance of custom data ingestion pipelines to bridge the gap between raw streams and training.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Comparison Table -->
+<section class="py-16 md:py-32 px-6 md:px-8 max-w-screen-2xl mx-auto">
+<h2 class="text-3xl md:text-4xl font-headline font-bold text-center mb-12 md:mb-16 text-[#FFFFFF]">Closer to engineering than large vendors</h2>
+<div class="overflow-x-auto -mx-6 px-6">
+<table class="w-full min-w-[700px] text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant/30">
+<th class="py-6 px-4 text-[10px] md:text-xs font-bold uppercase tracking-widest text-on-surface-variant">Feature</th>
+<th class="py-6 px-6 text-[10px] md:text-xs font-bold uppercase tracking-widest text-on-surface-variant border-l border-outline-variant/20">Freelancers</th>
+<th class="py-6 px-6 text-[10px] md:text-xs font-bold uppercase tracking-widest text-on-surface-variant border-l border-outline-variant/20">Large Vendors</th>
+<th class="py-6 px-6 text-[10px] md:text-xs font-bold uppercase tracking-widest text-on-surface-variant border-l border-outline-variant/20">Internal Teams</th>
+<th class="py-6 px-6 text-[10px] md:text-xs font-bold uppercase tracking-widest text-secondary border-l border-outline-variant/20">Bravora</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-6 px-4 font-semibold text-[#FFFFFF] text-sm md:text-base">Context Awareness</td>
+<td class="py-6 px-6 text-on-surface-variant text-sm md:text-base border-l border-outline-variant/20">Zero</td>
+<td class="py-6 px-6 text-on-surface-variant text-sm md:text-base border-l border-outline-variant/20">Low (SOP-based)</td>
+<td class="py-6 px-6 text-on-surface-variant text-sm md:text-base border-l border-outline-variant/20">High (Expensive)</td>
+<td class="py-6 px-6 font-bold text-secondary text-sm md:text-base border-l border-outline-variant/20">Deep Integration</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-6 px-4 font-semibold text-[#FFFFFF] text-sm md:text-base">Data Sovereignty</td>
+<td class="py-6 px-6 text-red-400 text-sm md:text-base border-l border-outline-variant/20">Low</td>
+<td class="py-6 px-6 text-on-surface-variant text-sm md:text-base border-l border-outline-variant/20">Generic NDAs</td>
+<td class="py-6 px-6 text-on-surface-variant text-sm md:text-base border-l border-outline-variant/20">Total</td>
+<td class="py-6 px-6 font-bold text-secondary text-sm md:text-base border-l border-outline-variant/20">Secure EU VPCs</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-6 px-4 font-semibold text-[#FFFFFF] text-sm md:text-base">Scalability</td>
+<td class="py-6 px-6 text-on-surface-variant text-sm md:text-base border-l border-outline-variant/20">Unreliable</td>
+<td class="py-6 px-6 text-on-surface-variant text-sm md:text-base border-l border-outline-variant/20">Massive</td>
+<td class="py-6 px-6 text-on-surface-variant text-sm md:text-base border-l border-outline-variant/20">Static</td>
+<td class="py-6 px-6 font-bold text-secondary text-sm md:text-base border-l border-outline-variant/20">Managed &amp; Elastic</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Case Study Section -->
+<section class="py-16 md:py-32 bg-primary-container relative" id="proof">
+<div class="max-w-screen-2xl mx-auto px-6 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+<div class="space-y-8 order-2 lg:order-1">
+<span class="bg-secondary/20 text-secondary px-3 py-1 rounded text-[10px] md:text-xs font-black uppercase tracking-tighter inline-block">Built around real computer vision workflows</span>
+<h2 class="text-3xl md:text-5xl font-headline font-bold leading-tight text-[#FFFFFF]">OCR Logistics Case Study</h2>
+<div class="space-y-4 text-primary text-base md:text-lg">
+<p>Working with leaders like <span class="text-[#FFFFFF] font-bold">Vitronic</span> and <span class="text-[#FFFFFF] font-bold">DGT</span>, we developed a specialized labeling workflow for identifying high-speed train ID numbers in low-light environments for <span class="text-[#FFFFFF] font-bold">CFL</span>.</p>
+<p class="text-sm md:text-base text-on-primary-container">The challenge involved overcoming severe motion blur and complex identification markings. We provided full 2D bounding box support and integrated directly with their target/actual analysis toolchain.</p>
+</div>
+<div class="p-6 md:p-8 border-l-4 border-secondary bg-surface/30">
+<p class="italic text-base md:text-lg text-[#FFFFFF]">"Bravora isn't just an annotation shop; they are a strategic partner that understands the physics of our data."</p>
+<p class="mt-4 font-bold text-secondary text-sm md:text-base">— Lead Engineering, CFL</p>
+</div>
+</div>
+<div class="relative group order-1 lg:order-2">
+<div class="absolute -inset-2 bg-gradient-to-r from-secondary to-blue-500 rounded-lg blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
+<div class="relative bg-surface-container rounded-lg overflow-hidden border border-outline-variant/10 aspect-video lg:aspect-square">
+<img class="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-500" data-alt="night time industrial railyard with freight trains and complex identification markings illuminated by stark yard lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9F6441e0MPOEOx_Xyf3bNNIPC2Dw-vukPi4DJdIS_QYOSuL8_OeSFhKZ3PgvoeyGzW75g2Vb9EdzMB4JHK_BVjG6LcZRYoKBWe7mcqsqzpTGMszLqNt56lP4hS-Dy7uRQ3nh5Pu7RUac7h-sIb5v4Wpzk9L8bJnHwDa2fMW9D4pLzm7IDUKLdNYYV7EMEfJTbGV6EJnnXHJHxtCIawKT0WEYytFT5he03_FK7AZoXKZF5cnovV84wI0xVzKZLgWg7Vyl-5H_8zMJB"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Engagement Section -->
+<section class="py-16 md:py-32 px-6 md:px-8 max-w-screen-2xl mx-auto" id="how-it-works">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+<div>
+<h2 class="text-3xl md:text-5xl font-headline font-bold mb-6 md:mb-8 text-[#FFFFFF]">A managed workflow, not a handoff-and-hope model.</h2>
+<p class="text-on-surface-variant text-base md:text-lg mb-8">We collaborate as an extension of your engineering team. This is about operational control, not just outsourcing tasks.</p>
+<ul class="space-y-4">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+<span class="text-on-surface font-medium text-sm md:text-base">Workflow setup: Secure ingestion via SDK or VPC.</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+<span class="text-on-surface font-medium text-sm md:text-base">Dedicated teams: Context-aware labelers for your domain.</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+<span class="text-on-surface font-medium text-sm md:text-base">Direct collaboration: Slack-first communication loop.</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+<span class="text-on-surface font-medium text-sm md:text-base">Fast ramp-up: From consultation to scale in weeks.</span>
+</li>
+</ul>
+<div class="mt-10 md:mt-12">
+<a class="bg-primary-container text-primary px-8 py-4 rounded font-bold text-center md:text-lg inline-block border border-outline-variant/10 hover:bg-on-primary-fixed-variant/20 transition-all w-full md:w-auto" href="#pilot">Walk through your current workflow</a>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 md:p-8 rounded-xl border border-outline-variant/10">
+<span class="text-secondary font-bold text-[10px] md:text-sm tracking-widest uppercase mb-6 block">Operational control matters as much as output quality</span>
+<p class="text-on-surface-variant text-sm md:text-base leading-relaxed mb-6">Security and compliance are built into our delivery model. We provide engineering leads with the transparency they need to trust the data pipeline.</p>
+<div class="space-y-4">
+<div class="flex items-center gap-4 bg-background/40 p-4 rounded">
+<span class="material-symbols-outlined text-secondary">lock</span>
+<span class="text-xs md:text-sm font-semibold">No crowdsourcing (Staff only)</span>
+</div>
+<div class="flex items-center gap-4 bg-background/40 p-4 rounded">
+<span class="material-symbols-outlined text-secondary">policy</span>
+<span class="text-xs md:text-sm font-semibold">Strict NDA protocols by default</span>
+</div>
+<div class="flex items-center gap-4 bg-background/40 p-4 rounded">
+<span class="material-symbols-outlined text-secondary">dns</span>
+<span class="text-xs md:text-sm font-semibold">EU-only Data Residency available</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Pilot Section -->
+<section class="py-16 md:py-32 bg-surface-container-lowest" id="pilot">
+<div class="max-w-screen-lg mx-auto px-6 md:px-8">
+<div class="bg-surface-container-low p-8 md:p-12 rounded-xl shadow-2xl">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
+<div class="space-y-6 md:space-y-8">
+<h2 class="text-3xl md:text-4xl font-headline font-bold text-[#FFFFFF]">Start with a two-week pilot.</h2>
+<div class="space-y-6 text-on-surface-variant">
+<p class="text-sm md:text-base">Evaluate Bravora inside a real workflow. Test the usability of our outputs and the speed of our iteration cycle before committing to scale.</p>
+<p class="font-bold text-secondary text-base md:text-lg">The No-Invoice Guarantee:</p>
+<p class="text-xs md:text-sm italic">If we don't meet the precision metrics defined in the pilot plan, you pay nothing. All we require is a 30-minute review session at the end of the sprint.</p>
+</div>
+</div>
+<form class="space-y-6" onsubmit="event.preventDefault(); this.innerHTML = '&lt;div class=\'h-64 flex flex-col items-center justify-center text-center\'&gt;&lt;span class=\'material-symbols-outlined text-secondary text-6xl mb-4\'&gt;check_circle&lt;/span&gt;&lt;h3 class=\'text-2xl font-bold text-white\'&gt;Request Received&lt;/h3&gt;&lt;p class=\'text-on-surface-variant\'&gt;An engineer will contact you for a technical review.&lt;/p&gt;&lt;/div&gt;'">
+<div>
+<label class="block text-[10px] md:text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2">Engineering Lead Name</label>
+<input class="w-full bg-surface-container-highest border-none focus:ring-2 focus:ring-secondary rounded p-4 text-[#FFFFFF] placeholder:text-outline text-sm" placeholder="Your Name" required="" type="text"/>
+</div>
+<div>
+<label class="block text-[10px] md:text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2">Work Email</label>
+<input class="w-full bg-surface-container-highest border-none focus:ring-2 focus:ring-secondary rounded p-4 text-[#FFFFFF] placeholder:text-outline text-sm" placeholder="name@company.com" required="" type="email"/>
+</div>
+<div>
+<label class="block text-[10px] md:text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2">Project Scope</label>
+<textarea class="w-full bg-surface-container-highest border-none focus:ring-2 focus:ring-secondary rounded p-4 text-[#FFFFFF] placeholder:text-outline text-sm" placeholder="Tell us about your CV project and data requirements..." required="" rows="4"></textarea>
+</div>
+<button class="w-full bg-secondary text-on-secondary font-bold py-4 rounded hover:bg-secondary/90 transition-all flex items-center justify-center gap-2 text-sm md:text-base" type="submit">
+<span>Start pilot</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</form>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="py-24 md:py-32 relative overflow-hidden bg-background px-6">
+<div class="absolute inset-0 bg-secondary/5 blur-[120px] rounded-full scale-150"></div>
+<div class="relative z-10 max-w-screen-2xl mx-auto text-center space-y-6 md:space-y-8">
+<h2 class="text-4xl md:text-6xl font-headline font-extrabold tracking-tighter text-[#FFFFFF]">Need to test this in your own workflow?</h2>
+<p class="text-lg md:text-xl text-on-surface-variant max-w-2xl mx-auto">Skip the generic pitch. Let's run a pilot on your real data and see if we can resolve your current engineering bottlenecks.</p>
+<div class="flex justify-center pt-6">
+<a class="bg-secondary text-on-secondary px-8 md:px-10 py-4 md:py-5 rounded font-bold text-lg md:text-xl hover:scale-105 transition-transform w-full sm:w-auto" href="#pilot">Start a pilot</a>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-slate-950 w-full py-12 md:py-16 px-6 md:px-8 border-t border-slate-800/50 font-['Inter'] text-sm tracking-wide">
+<div class="max-w-screen-2xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 md:gap-8">
+<div class="space-y-4">
+<div class="text-xl font-bold text-slate-200">Bravora LLC</div>
+<p class="text-slate-500 max-w-xs leading-relaxed">Industrial-grade Data Ops for the next generation of automation.</p>
+</div>
+<div class="flex flex-col gap-3">
+<span class="text-slate-100 font-bold mb-2">Company</span>
+<a class="text-slate-500 hover:text-emerald-300 transition-colors" href="#">Security</a>
+<a class="text-slate-500 hover:text-emerald-300 transition-colors" href="#">NDAs</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="text-slate-100 font-bold mb-2">Support</span>
+<a class="text-slate-500 hover:text-emerald-300 transition-colors" href="#">Contact</a>
+<a class="text-slate-500 hover:text-emerald-300 transition-colors" href="#">Privacy Policy</a>
+</div>
+<div class="flex flex-col gap-4">
+<span class="text-slate-100 font-bold mb-2">Follow</span>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-slate-500 cursor-pointer hover:text-secondary transition-colors">public</span>
+<span class="material-symbols-outlined text-slate-500 cursor-pointer hover:text-secondary transition-colors">hub</span>
+</div>
+<p class="text-slate-600 mt-4">© 2024 Bravora Industrial. All rights reserved.</p>
+</div>
+</div>
+</footer>
+</body></html>
